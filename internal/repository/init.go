@@ -3,6 +3,8 @@ package repository
 import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+
+	"github.com/suhaibkhan/apitestgo/internal/domain"
 )
 
 func Init() *gorm.DB {
@@ -12,7 +14,7 @@ func Init() *gorm.DB {
 	sqlDB.SetMaxIdleConns(2)
 	sqlDB.SetMaxOpenConns(10)
 
-	db.AutoMigrate(&Todo{})
+	db.AutoMigrate(&domain.Todo{})
 
 	return db
 }

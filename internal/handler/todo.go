@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/suhaibkhan/apitestgo/internal/domain"
 	"github.com/suhaibkhan/apitestgo/internal/repository"
 )
 
@@ -24,7 +25,7 @@ func RegisterTodoRoutes(apiGroup *gin.RouterGroup, todoRepo *repository.TodoRepo
 }
 
 func (handler *TodoHandler) CreateTodo(c *gin.Context) {
-	todo := &repository.Todo{}
+	todo := &domain.Todo{}
 	if err := c.BindJSON(todo); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid todo object"})
 		return
